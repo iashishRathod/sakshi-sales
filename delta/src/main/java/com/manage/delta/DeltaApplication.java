@@ -9,7 +9,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 public class DeltaApplication {
 
-
 	public static void main(String[] args) {
 		SpringApplication.run(DeltaApplication.class, args);
 		System.out.print("Hi Welcome to Delta");

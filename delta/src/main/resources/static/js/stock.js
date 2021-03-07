@@ -169,7 +169,7 @@ function addEventListners(){
 					$("#stockGrid").jqGrid('setGridParam', { datatype: 'jsonstring',datastr: data.stockSOList }).trigger('reloadGrid');
 				}
 				else{
-					showFlasMessage('info' , 'No Records found!',3000);
+					showFlasMessage('info' , 'No Records found!',2000);
 				}
 			}
 		});
@@ -218,7 +218,7 @@ function addEventListners(){
 			type: 'POST',
 			jopts:{smsg:'Saved successfully'},
 			success: function(data){
-				showFlasMessage('success' , 'Saved Sucessfully!',3000);
+				showFlasMessage('success' , 'Saved Sucessfully!',2000);
 				$( "#go" ).click();;
 			}
 		});

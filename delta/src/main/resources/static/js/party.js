@@ -108,7 +108,7 @@ function addEventListners(){
 					}
 				}
 				else{
-					showFlasMessage('info' , 'No Records found!',3000);
+					showFlasMessage('info' , 'No Records found!',2000);
 				}
 			}
 		});
@@ -157,7 +157,7 @@ function addEventListners(){
 			contentType: "application/json; charset=utf-8",
 			type: 'POST',
 			success: function(data){
-				showFlasMessage('success' , 'Saved Sucessfully!',3000);
+				showFlasMessage('success' , 'Saved Sucessfully!',2000);
 				$( "#go" ).click();;
 			}
 		});
