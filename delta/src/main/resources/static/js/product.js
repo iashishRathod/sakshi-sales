@@ -128,6 +128,11 @@ function addEventListners(){
 			  }
 			});
 	});
+	
+	$("#clear").click(function(){
+		document.getElementById("productName").value = 'ALL';
+		document.getElementById("productType").value = 'ALL';
+	});
 
 }
  function getFormData (containerId,options) {

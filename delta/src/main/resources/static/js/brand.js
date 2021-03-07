@@ -447,6 +447,13 @@ function addEventListners(){
 			}
 		});
 	});
+	
+	$("#clear").click(function(){
+		document.getElementById("brandName").value = 'ALL';
+		document.getElementById("email").value = '';
+		document.getElementById("productName").value = 'ALL';
+		document.getElementById("partyName").value = 'ALL';
+	});
 }
 
 function getFormData (containerId,options) {

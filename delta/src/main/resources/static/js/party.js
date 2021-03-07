@@ -162,6 +162,12 @@ function addEventListners(){
 			}
 		});
 	});
+	
+	$("#clear").click(function(){
+		document.getElementById("name").value = 'ALL';
+		document.getElementById("email").value = '';
+		document.getElementById("startDate").value = '';
+	});
 }
 
 function getFormData (containerId,options) {
