@@ -54,6 +54,11 @@ public class StockRoleImpl implements StockRole {
 			stockSO.getErrorList().add("Serial Number not Exist");
 			return stockSO;
 		}
+		
+		if(stockSerial.getAllocationDate() == null) {
+			stockSO.getErrorList().add("Serial number not allocated!");
+			return stockSO;
+		}
 
 		stockSO.setBrandName(stockSerial.getStock().getBrandName());
 		stockSO.setProduct(stockSerial.getStock().getProduct());
