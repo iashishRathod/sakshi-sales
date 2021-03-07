@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewReport" content="width=device-width, intial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,100&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.20/themes/redmond/jquery-ui.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.14.0/css/ui.jqgrid.min.css">
+<link rel="stylesheet" type="text/css" href="http://www.ok-soft-gmbh.com/jqGrid/jquery-ui-multiselect/1.12/jquery.multiselect.css">
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.20/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.14.0/jquery.jqgrid.min.js"></script>
+<script type="text/javascript" src="http://www.ok-soft-gmbh.com/jqGrid/jquery-ui-multiselect/1.12/jquery.multiselect.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
+
+<title>Home</title>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<div class="logo">
+				<h4>Sakshi Sales</h4>
+			</div>
+			<ul class="nav-links">
+				<li><a href="home">Home</a></li>
+				<li><a href="product">Product</a></li>
+				<li><a href="party">Party</a></li>
+				<li><a href="brand">Brand</a></li>
+				<li><a href="stock">Stock</a></li>
+				<li><a href="invoice">Invoice</a></li>
+				<!-- <li><a href="user">User</a></li> -->
+			</ul>
+		</nav>
+	</header>
+	
+	<p>Current Page : Invoice</p>
+
+	<div>
+		<form id = "searchPanel">
+			<label for="partyName">Party Name</label> 
+			<select class="dropDowns" name="partyName" id="partyName">
+				<option th:each="partyName : ${partyNameList}" th:text="${partyName}" />
+			</select> 
+			<input type=date id=invoiceDate  required pattern="\d{2}-\d{2}-\d{2}"/> 
+			<input type = button id = load value = Continue />
+			<input type = button id = clear value = Clear />
+		</form>
+	</div>
+
+	<div class="grid-div">
+		<table id="invoiceGrid"></table>
+		<div id='invoiceGridNav'></div>
+	</div>
+
+	<div class="footer">
+		<ul>
+			<li><input type=button id="save" value="Save"
+				style="margin-top: 15px; margin-right: 10px; width: 64px; margin-bottom: 15px;" />
+				<input type=button id="cancel" value="Cancel"
+				style="margin-top: 15px; margin-right: 100px; width: 69px; margin-bottom: 15px;" /></li>
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="/js/invoice.js" ></script>
+</body>
+</html>
