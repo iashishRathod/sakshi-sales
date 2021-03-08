@@ -15,10 +15,11 @@ function createBrandGrid() {
 		colModel: [
 			{name : 'brandId',align : "left",index : 'brandId',hidden:true},
 			{name : 'name',align : "left",index : 'name',sortable : false,width:80,editable: true,editrules: {required: true},
-				editoptions: { style: "text-transform: uppercase" }},
-			{name : 'desc',align : "left",index : 'desc',sortable : false,editable: true,width:80,editoptions: { style: "text-transform: uppercase" }},
+				editoptions: { style: "text-transform: uppercase" },formatter: function (cellValue, opts, rowObject) { return cellValue ? cellValue.toUpperCase() : ''; }},
+			{name : 'desc',align : "left",index : 'desc',sortable : false,editable: true,width:80,editoptions: { style: "text-transform: uppercase" },
+				formatter: function (cellValue, opts, rowObject) { return cellValue ? cellValue.toUpperCase() : ''; }},
 			{name : 'email',align:"left",index : 'email',sortable : false,editable: true,width:80,editrules: {custom_func: validateEmail,custom: true},
-			editoptions: { style: "text-transform: uppercase" }},
+			editoptions: { style: "text-transform: uppercase" },formatter: function (cellValue, opts, rowObject) { return cellValue ? cellValue.toUpperCase() : ''; }},
 			{name : 'partyNames',align : "left",index : 'partyNames',hidden:true},
 			{name : 'productNames',align : "left",index : 'productNames',hidden:true}
 			],

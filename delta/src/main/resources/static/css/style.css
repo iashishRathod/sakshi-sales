@@ -60,6 +60,7 @@ input {
 	border: 1px solid #cccccc;
 	padding: 8px;
 	margin-top: 36px;
+	text-transform:uppercase; 
 }
 
 .search button {

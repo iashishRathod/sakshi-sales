@@ -12,7 +12,8 @@ function createPartyGrid() {
 		},
 		colModel: [
 			{name : 'partyId',align : "left",index : 'partyId',width:80,hidden: true},
-			{name : 'name',align : "left",index : 'name',width:80,editable: true,editrules: {required: true},editoptions: { style: "text-transform: uppercase" }},
+			{name : 'name',align : "left",index : 'name',width:80,editable: true,editrules: {required: true},editoptions: { style: "text-transform: uppercase" },
+				formatter: function (cellValue, opts, rowObject) { return cellValue ? cellValue.toUpperCase() : ''; }},
 			{name : 'startDate',align : "left",index : 'startDate',width:80,editable: true,editoptions: {
                 dataInit: function (element) {
                     $(element).datepicker({
@@ -20,8 +21,8 @@ function createPartyGrid() {
                     });
                 }
             },editrules: {required: true}},
-			{name : 'email',align:"left",index : 'email',sortable : false,editable: true,width:80,
-            	editrules: {custom_func: validateEmail,custom: true},editoptions: { style: "text-transform: uppercase" }},
+			{name : 'email',align:"left",index : 'email',sortable : false,editable: true,width:80,editrules: {custom_func: validateEmail,custom: true},
+            	editoptions: { style: "text-transform: uppercase" },formatter: function (cellValue, opts, rowObject) { return cellValue ? cellValue.toUpperCase() : ''; }},
 			{name : 'contactNumber',align : "left",index : 'contactNumber',sortable : false,editable: true,width:80,
             		editrules: {custom_func: validateContactNumber,custom: true}}
 			],
@@ -33,7 +34,6 @@ function createPartyGrid() {
 			pager: 'partyGridNav',
 			rowNum: 5
 	});
-	//setMandatoryLabel(['name','startDate'],partyGrid);
 };
 
 function validateEmail(value,column){

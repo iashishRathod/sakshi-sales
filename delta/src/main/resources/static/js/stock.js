@@ -14,7 +14,7 @@ function createStockGrid() {
 	"use strict";
 	stockGrid =  $("#stockGrid").jqGrid({
 		colNames : ['','Brand Name','Product', 'Stock In','Allocated','Available','Total',''],
-		colModel: [
+		colModel : [
 			{name : 'stockId',align : "left",index : 'stockId',hidden:true},
 			{name : 'brandName',align : "left",index : 'brandName',sortable : false,width:80,editable: true,edittype: 'select', formatter: 'select',
 				editoptions:{value: brandSelect},editrules: {required:true}},
@@ -162,6 +162,7 @@ function addEventListners(){
 			success: function(data){
 				if(data && data.stockSOList && data.stockSOList.length > 0){
 					loadDataIds = [];
+					stockIdValues=[];
 					for(var i = 0 ; i < data.stockSOList.length ; i++){
 						loadDataIds.push(data.stockSOList[i].stockId);
 						stockIdValues.push(data.stockSOList[i].stockSerialSO);

@@ -118,16 +118,16 @@ function createInvoiceGrid() {
                                 },
                                 close : function(){
                                 	var values = this.selectedOptions;
+                                	var val = "";
                                 	if(values && values.length > 0){
-                                		var val = '';
                                 		for(var i = 0 ; i < values.length ; i++){
                                 			val += values[i].innerText  +",";
                                 		}
                                 	}
                                 	var rowid = $('#invoiceGrid').jqGrid('getGridParam','selrow');
                                 	var rowData = $('#invoiceGrid').jqGrid('getRowData', rowid);
-                                	rowData.serialNumbers = val.slice(0,-1);
-                                	var size = rowData.serialNumbers.split(",").length;
+                                	rowData.serialNumbers = val.length == 0 ? '' : val.slice(0,-1);
+                                	var size = rowData.serialNumbers.length == 0 ? 0 :rowData.serialNumbers.split(",").length;
                                 	invoiceGrid.setCell(rowid,"qty",size,{},{});
                                 }
                             });

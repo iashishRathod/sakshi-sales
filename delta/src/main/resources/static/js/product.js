@@ -12,8 +12,10 @@ function createProductGrid() {
 		},
 		colModel: [
 			{name : 'productId',align : "left",index : 'productId',width:80,hidden: true},
-			{name : 'name',align : "left",index : 'name',sortable : false,width:80,editable: true,editrules: {required: true},editoptions: { style: "text-transform: uppercase" }},
-			{name : 'type',align : "left",index : 'type',sortable : false,editable: true,width:80,editrules: {required: true},editoptions: { style: "text-transform: uppercase" }}
+			{name : 'name',align : "left",index : 'name',sortable : false,width:80,editable: true,editrules: {required: true},
+				editoptions: { style: "text-transform: uppercase" },formatter: function (cellValue, opts, rowObject) { return cellValue ? cellValue.toUpperCase() : ''; }},
+			{name : 'type',align : "left",index : 'type',sortable : false,editable: true,width:80,editrules: {required: true},
+					editoptions: { style: "text-transform: uppercase" },formatter: function (cellValue, opts, rowObject) { return cellValue ? cellValue.toUpperCase() : ''; }}
 			],
 			height : 262,
 			sortorder: "desc",
