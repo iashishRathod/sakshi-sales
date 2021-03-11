@@ -5,7 +5,6 @@ var loadDataIds = [];
 var brandSelect = '';
 var productSelect = '';
 var brandNameList = [];
-var brandPartyList = [];
 var brandProductList = [];
 var stockIdValues = [];
 var snackbarContainer = document.getElementById('snackbar-container');
@@ -17,7 +16,48 @@ function createStockGrid() {
 		colModel : [
 			{name : 'stockId',align : "left",index : 'stockId',hidden:true},
 			{name : 'brandName',align : "left",index : 'brandName',sortable : false,width:80,editable: true,edittype: 'select', formatter: 'select',
-				editoptions:{value: brandSelect},editrules: {required:true}},
+					editoptions: { value: brandSelect,
+                        dataInit: function (elem) {
+                            var temp = $(elem).value;
+							var index = brandNameList.indexOf(temp);
+							var productList = brandProductList[index];
+							if(productList && productList.length > 0){
+								productSelect = '';
+								for(var i = 0 ; i < productList.length ; i++){
+									productSelect +=  productList[i] +":"+productList[i] +";";
+								}
+	                            
+								stockGrid.setColProp('product', { editoptions: { value: productSelect} });
+							}
+                        },
+                        dataEvents: [
+                            {
+                                type: 'change',
+                                fn: function(e) {
+                                    var temp = this.value;
+                                    var res = '';
+                                    var index = brandNameList.indexOf(temp);
+        							var productList = brandProductList[index];
+        							if(productList && productList.length > 0 ){
+        								for (var id in productList) {
+        									if (productList.hasOwnProperty(id)) {
+        										res += '<option role="option" value="' + productList[id] +
+        										'">' + productList[id] + '</option>';
+        									}
+        								}
+        							}
+        							else{
+        								var v = 'No prodcuts Found';
+        								res += '<option role="option" value="' + v +
+										'">' + v + '</option>';
+        							}
+                                    var row = $(e.target).closest('tr.jqgrow');
+                                    var rowId = row.attr('id');
+                                    $("select#" + rowId + "_product", row[0]).html(res);
+                                }
+                            }
+                        ]
+                    },editrules: {required: true}},
 			{name : 'product',align : "left",index : 'product',sortable : false,editable: true,width:80,edittype: 'select', formatter: 'select',
 					editoptions:{value:productSelect},editrules: {required: true}},
 			{name : 'stockInDate',align : "left",index : 'stockInDate',sortable : false,width:80,editable: true, editoptions: {
@@ -109,12 +149,10 @@ $(document).ready(function(){
 			
 			if(data.brandNameList && data.brandNameList.length > 0){
 				brandNameList = data.brandNameList;
-				brandPartyList = data.brandPartyList;
 				brandProductList = data.brandProductList;
 			}
 		}
 	});
-
 
 	createStockGrid();
 	addButtons(stockGrid);
